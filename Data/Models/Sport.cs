@@ -10,6 +10,6 @@ namespace UltraPlayBettingSystemExercise.Data.Models
         }
         public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
-        public virtual ICollection<Event> Events { get; set; }
+        public virtual IEnumerable<Event> Events { get; set; }
     }
 }

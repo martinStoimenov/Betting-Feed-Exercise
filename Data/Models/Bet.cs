@@ -12,6 +12,6 @@ namespace UltraPlayBettingSystemExercise.Data.Models
         public bool IsLive { get; set; }
         public int MatchId { get; set; }
         public Match Match { get; set; }
-        public virtual ICollection<Odd> Odds { get; set; }
+        public virtual IEnumerable<Odd> Odds { get; set; }
     }
 }

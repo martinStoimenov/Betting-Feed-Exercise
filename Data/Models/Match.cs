@@ -13,6 +13,6 @@ namespace UltraPlayBettingSystemExercise.Data.Models
         public string MatchType { get; set; }
         public int EventId { get; set; }
         public Event Event { get; set; }
-        public virtual ICollection<Bet> Bets { get; set; }
+        public virtual IEnumerable<Bet> Bets { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using UltraPlayBettingSystemExercise.Services.Interfaces;
 using UltraPlayBettingSystemExercise.ViewModels;
 
@@ -25,7 +26,8 @@ namespace UltraPlayBettingSystemExercise.Controllers
             if (res == null)
                 return new JsonResult($"Oops Match with id: {id} could not be found");
 
-            return new JsonResult(res);
+            var jsonResponse = new JsonResult(res, new JsonSerializerOptions() { WriteIndented = true });
+            return new JsonResult(jsonResponse);
         }
     }
 }

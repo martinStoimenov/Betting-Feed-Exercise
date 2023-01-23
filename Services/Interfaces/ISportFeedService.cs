@@ -6,5 +6,6 @@ namespace Services.Interfaces
     {
         Task<bool> SaveIfNewFeedAvailable(SportViewModel viewModel);
         Task<T> GetFeed<T>();
+        void GetXMLFeedEvery60Seconds();
     }
 }

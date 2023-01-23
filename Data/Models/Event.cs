@@ -13,6 +13,6 @@ namespace UltraPlayBettingSystemExercise.Data.Models
         public int CategoryID { get; set; }
         public int SportId { get; set; }
         public Sport Sport { get; set; }
-        public virtual ICollection<Match> Matches { get; set; }
+        public virtual IEnumerable<Match> Matches { get; set; }
     }
 }

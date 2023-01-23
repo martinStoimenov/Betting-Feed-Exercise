@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Reactive.Linq;
+using System.Text.Json;
 using UltraPlayBettingSystemExercise.Services.Interfaces;
 using UltraPlayBettingSystemExercise.ViewModels;
 
@@ -21,22 +22,9 @@ namespace UltraPlayBettingSystemExercise.Controllers
         {
             var result = await service.GetAllMatchesInLast24Hours<MatchViewModel>();
 
-            //GetDataEveryMinute();
+            var jsonResponse = new JsonResult(result, new JsonSerializerOptions() { WriteIndented = true });
 
-            return new JsonResult(result);
-        }
-
-        private void GetDataEveryMinute()
-        {
-            IObservable<IActionResult> timer = Observable.Generate(
-                new { now = DateTimeOffset.Now, count = 0 },
-                t => true,
-                t => new { t.now, count = t.count + 1 },
-                t => t.count,
-                t => t.now.AddMinutes(t.count))
-            .SelectMany(x => Observable.FromAsync(() => this.Get()));
-
-            timer.Subscribe();
+            return jsonResponse;
         }
     }
 }
